@@ -30,7 +30,7 @@ function About() {
                         alt="" 
                     /> }
                     
-                </div>
+                </div>  
             </div>
         </div>
 
