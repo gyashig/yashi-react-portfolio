@@ -131,17 +131,27 @@ function Contacts() {
 
     const handleContactForm = (e) => {
         e.preventDefault();
+        // console.log(name,email,message);
+        const responseData={
+            name:name,
+            email:email,
+            message:message
+        
+        }
 
-        if (name && email && message) {
-            if (isEmail(email)) {
-                const responseData = {
-                    name: name,
-                    email: email,
-                    message: message,
-                };
+        // if (name && email && message) {
+        //     if (isEmail(email)) {
+        //         const responseData = {
+        //             name: name,
+        //             email: email,
+        //             message: message,
+        //         };
 
-                axios.post(contactsData.sheetAPI, responseData).then((res) => {
-                    console.log('success');
+                axios.post(
+                    'https://sheet.best/api/sheets/d3f683a9-3321-4186-b364-163cbb349c20',
+                    responseData
+                  ).then((res) => {
+                    console.log(res);
                     setSuccess(true);
                     setErrMsg('');
 
@@ -149,15 +159,19 @@ function Contacts() {
                     setEmail('');
                     setMessage('');
                     setOpen(false);
-                });
-            } else {
-                setErrMsg('Invalid email');
-                setOpen(true);
-            }
-        } else {
-            setErrMsg('Enter all the fields');
-            setOpen(true);
-        }
+                })
+                .catch((error) => {
+                    setErrMsg('Error occurred while submitting the form');
+                    setOpen(true);
+                  });
+        //     } ;else {
+        //         setErrMsg('Invalid email');
+        //         setOpen(true);
+        //     }
+        // } else {
+        //     setErrMsg('Enter all the fields');
+        //     setOpen(true);
+        // }
     };
 
     return (
@@ -180,7 +194,7 @@ function Contacts() {
                                     value={name}
                                     onChange={(e) => setName(e.target.value)}
                                     type='text'
-                                    name='Name'
+                                    name='name'
                                     className={`form-input ${classes.input}`}
                                 />
                             </div>
@@ -196,7 +210,7 @@ function Contacts() {
                                     value={email}
                                     onChange={(e) => setEmail(e.target.value)}
                                     type='email'
-                                    name='Email'
+                                    name='email'
                                     className={`form-input ${classes.input}`}
                                 />
                             </div>
@@ -212,7 +226,7 @@ function Contacts() {
                                     value={message}
                                     onChange={(e) => setMessage(e.target.value)}
                                     type='text'
-                                    name='Message'
+                                    name='message'
                                     className={`form-message ${classes.message}`}
                                 />
                             </div>
