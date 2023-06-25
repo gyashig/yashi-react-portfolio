@@ -159,6 +159,8 @@ function Contacts() {
                     setEmail('');
                     setMessage('');
                     setOpen(false);
+                    alert('Your message has been received!');
+
                 })
                 .catch((error) => {
                     setErrMsg('Error occurred while submitting the form');
