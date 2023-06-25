@@ -1,11 +1,11 @@
 import React, { useContext } from 'react';
-import { BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch, Redirect, BrowserRouter } from 'react-router-dom';
 
 import { ThemeContext } from './contexts/ThemeContext';
 import { Main, ProjectPage } from './pages'
 import { BackToTop } from './components'
 import ScrollToTop from './utils/ScrollToTop'
-
+import Chatbot from './components/Chatbot/Chatbot';
 import './App.css'
 
 function App() {
@@ -18,6 +18,7 @@ function App() {
 
   return (
     <div className="app">
+    <BrowserRouter>
       <Router>
         <ScrollToTop/>
         <Switch>
@@ -28,7 +29,9 @@ function App() {
           <Redirect to="/" />
         </Switch>
       </Router>
+      </BrowserRouter>
       <BackToTop />
+      <Chatbot/>
     </div>
   );
 }
