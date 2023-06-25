@@ -1,5 +1,7 @@
 import ChatBot from 'react-simple-chatbot';
 import { ThemeProvider } from 'styled-components';
+import myImage from './img.png'
+
  
 const steps = [
     {
@@ -57,13 +59,18 @@ const theme = {
  
 // Set some properties of the bot
 const config = {
-    botAvatar: "img.png",
+  
     floating: true,
     background:'#F03939',
     floatingStyle: {
       right: '89px',
       bottom:'20px' // Set the distance from the right side here
   },
+  botAvatar: myImage,
+    botAvatarStyle: {
+        width: '50px',
+        height: '50px',
+    },
     
 };
  
